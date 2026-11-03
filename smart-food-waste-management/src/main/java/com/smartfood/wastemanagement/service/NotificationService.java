@@ -1,0 +1,3 @@
+package com.smartfood.wastemanagement.service;
+import com.smartfood.wastemanagement.entity.AppNotification; import com.smartfood.wastemanagement.entity.AppUser; import com.smartfood.wastemanagement.repository.AppNotificationRepository; import org.springframework.stereotype.Service; import org.springframework.transaction.annotation.Transactional;
+@Service public class NotificationService { private final AppNotificationRepository repo; public NotificationService(AppNotificationRepository repo){this.repo=repo;} @Transactional public void notify(AppUser user,String message){if(user==null)return;AppNotification n=new AppNotification();n.setRecipient(user);n.setMessage(message);repo.save(n);} }
